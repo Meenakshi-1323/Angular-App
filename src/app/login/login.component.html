@@ -1,0 +1,18 @@
+<div class="login-form">
+    <h1>Login</h1>
+    <form #loginForm="ngForm" (ngSubmit)='onSubmit(loginForm)'>
+        <label>Enter Name: </label>
+        <input placeholder="Enter Name" type="text" name="name" #name="ngModel" required ngModel>
+        <div *ngIf="name.invalid && name.touched" style="color:red">Name is required</div>
+        <br>
+        <br>
+        <label>Enter password: </label>
+        <input placeholder="Enter password" type="password" name="password" #password="ngModel" minlength="7" maxlength="20" required ngModel>
+        <div *ngIf="password.invalid && password.touched" style="color:red">Password must be 7-20 chracters.</div>
+        <br>
+        <br>
+         <button class="border bg-primary rounded mb-2 h-2" type="submit" [disabled]='loginForm.invalid'>Login</button>
+    </form>
+
+</div>
+<router-outlet></router-outlet>

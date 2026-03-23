@@ -1,0 +1,33 @@
+<div class="form">
+    <h1 class="sign">Sign Up</h1>
+    <form #userForm="ngForm" (ngSubmit)=onSubmit(userForm)>
+        <br>
+        <div>
+            <label>Enter Name: </label>
+            <input placeholder="Enter Name" type="text" name="name"  #name="ngModel" required ngModel>
+            <div *ngIf="name.invalid && name.touched" style=" color:red">Name is required</div>
+        </div>
+        <br>
+        <div>
+            <label>Enter Email: </label>
+            <input placeholder="Enter Email" type="email" name="email" #email="ngModel"  required email ngModel>
+              <div *ngIf="email.invalid && email.touched" style=" color:red">  Enter valid email</div>
+        </div>
+        <br>
+        <div>
+            <label>Enter Contact no.: </label>
+            <input placeholder="Enter Contact no." type="text" name="contact" minlength="9" maxlength="13"  #contact="ngModel" pattern="[0-9]*" required ngModel>
+              <div *ngIf="contact.invalid && contact.touched" style=" color:red">Contact must be 9-13 digits</div>
+        </div>
+                <br>
+        <div>
+            <label>Create Password: </label>
+            <input placeholder="Enter Password" type="password" name="password" minlength="7" maxlength="20" #password="ngModel"  required ngModel>
+              <div *ngIf="password.invalid && password.touched" style=" color:red"> Password must be 7-20 characters</div>
+        </div>
+            <br>
+        
+        <button class="border bg-primary rounded mb-2 h-2" type="submit" (click)="onClick()" [disabled]='userForm.invalid'>SignUp</button>
+    </form>
+</div>
+<router-outlet></router-outlet>
